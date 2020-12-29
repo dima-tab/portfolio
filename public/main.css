@@ -1,0 +1,74 @@
+/********** fonts **********/
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600');
+/********** // fonts **********/
+
+/********** root **********/
+:root {
+    --Primary:#0c101c;
+    --Secondary: #394b65;
+    --FontColor: #fff;
+    --HighLight: #7ba0d9;
+}
+/********** // root **********/
+
+/********** resets **********/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    height: 100%;
+    background-color: var(--Primary);
+    color: var(--FontColor);
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.2;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+body {
+    height: 100%;
+    min-width: 320px;
+    background-color: var(--Primary);
+    font-size: 14px;
+}
+.center {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+.root {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    min-height: 100%;
+}
+.highlight {
+    color: var(--HighLight);
+}
+/********** // resets **********/
+
+/********** HeaderSecton **********/
+.header-secton {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--Secondary);
+}
+/********** // HeaderSecton **********/
+
+/********** MainSection **********/
+.main-section {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+/********** // MainSection **********/
+
+/********** colorScheme-btn **********/
+.footer-section {
+    padding: 10px 0;
+    border-top: 1px solid var(--Secondary);
+}
+/********** // colorScheme-btn **********/
