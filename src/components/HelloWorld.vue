@@ -1,7 +1,14 @@
 <template>
 <section class="root">
     <div class="header-secton">
-        <div class="center">
+      <div>
+        FONT AWESOME
+        <i class="far fa-question-circle"></i> <!-- solid style of the question circle icon -->
+        <i class="fas fa-question-circle"></i> <!-- solid style of the question circle icon -->
+        <i class="fab fa-facebook"></i>        <!-- facebook brand icon-->
+        <i class="fab fa-facebook-f"></i>      <!-- facebook "f" brand icon-->
+      </div>
+      <div class="center">
             <p>Ololo <span class="highlight">ololo</span></p>
         </div>
     </div>
@@ -49,6 +56,10 @@
 
 <script>
 import axios from 'axios'
+import '@fortawesome/fontawesome-free/js/all.js' // https://fontawesome.com/license
+
+import toastr from 'toastr'
+import 'toastr/build/toastr.css'
 
 // __________ ColorScheme toggle __________
 // const colorSchemeBtn = document.getElementsByClassName('colorScheme-btn')
@@ -95,6 +106,10 @@ export default {
   methods: {
     fnc: num => num * num * num,
     colorSchemeToggle: function () {
+      toastr.warning('My name is Inigo Montoya. You killed my father, prepare to die!', 'title', { timeOut: 5000 })
+      toastr.success('success !', 'success title', { timeOut: 5000 })
+      toastr.error('error !', 'error title', { timeOut: 5000 })
+      toastr.info('sone info!', 'info title', { timeOut: 5000 })
       if (this.colorSchemeCounter < colorSchemeLength - 1) {
         this.colorSchemeCounter++
       } else {

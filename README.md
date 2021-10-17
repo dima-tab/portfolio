@@ -1,4 +1,21 @@
 # portfolio
+```
+list of changes:
+
+init project
+init servers
+init theme's
+faicons
+toastr
+fontAwesome
+**********************
+translations i18n
+
+modals/dialogs:
+https://www.npmjs.com/package/vue-js-modal
+or
+https://www.npmjs.com/package/dialog-polyfill
+```
 
 ## Project setup
 ```
