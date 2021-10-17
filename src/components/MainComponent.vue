@@ -1,6 +1,6 @@
 <template>
 <section class="root">
-    <div class="header-secton">
+    <div class="header-section">
       <div>
         FONT AWESOME
         <i class="far fa-question-circle"></i> <!-- solid style of the question circle icon -->
@@ -9,37 +9,38 @@
         <i class="fab fa-facebook-f"></i>      <!-- facebook "f" brand icon-->
       </div>
       <div class="center">
-            <p>Ololo <span class="highlight">ololo</span></p>
+            <p>Portfolio <span class="highlight">project</span></p>
         </div>
     </div>
     <div class="main-section">
         <div class="center">
-          <div class='hello'>
-            <h1>{{ msg }}</h1>
-            <p>{{ count }}</p>
-            <p>{{ fnc(count) }}</p>
-            <ul>
-              <li
-                v-for="(item, index) in arr"
-                :key="'key_' + item.value"
-              >
-                - index: {{ index }} |
-                - value: {{ item.value }} |
-                - label: {{ item.label }}
-              </li>
-            </ul>
-            <ul>
-              <li
-                v-for="(item, key) in bitcoinInfo"
-                :key="'key_' + item.value"
-              >
-                - key: {{ key }} |
-                - code: {{ item.code }} |
-                - rate: {{ item.rate_float }}
-              </li>
-            </ul>
-            <button @click='count++'>Кликни меня полностью для +1</button>
-          </div>
+          <SliderDrum/>
+<!--          <div class='hello'>-->
+<!--            <h1>{{ msg }}</h1>-->
+<!--            <p>{{ count }}</p>-->
+<!--            <p>{{ fnc(count) }}</p>-->
+<!--            <ul>-->
+<!--              <li-->
+<!--                v-for="(item, index) in arr"-->
+<!--                :key="'key_' + item.value"-->
+<!--              >-->
+<!--                - index: {{ index }} |-->
+<!--                - value: {{ item.value }} |-->
+<!--                - label: {{ item.label }}-->
+<!--              </li>-->
+<!--            </ul>-->
+<!--            <ul>-->
+<!--              <li-->
+<!--                v-for="(item, key) in bitcoinInfo"-->
+<!--                :key="'key_' + item.value"-->
+<!--              >-->
+<!--                - key: {{ key }} |-->
+<!--                - code: {{ item.code }} |-->
+<!--                - rate: {{ item.rate_float }}-->
+<!--              </li>-->
+<!--            </ul>-->
+<!--            <button @click='count++'>Кликни меня полностью для +1</button>-->
+<!--          </div>-->
         </div>
     </div>
     <div class="footer-section">
@@ -61,8 +62,7 @@ import '@fortawesome/fontawesome-free/js/all.js' // https://fontawesome.com/lice
 import toastr from 'toastr'
 import 'toastr/build/toastr.css'
 
-// __________ ColorScheme toggle __________
-// const colorSchemeBtn = document.getElementsByClassName('colorScheme-btn')
+import SliderDrum from './SliderDrum.vue'
 const colorSchemeArray = [
   { // custom
     '--Primary': '#0c101c',
@@ -83,11 +83,10 @@ const colorSchemeArray = [
     '--HighLight': '#040404'
   }
 ]
-const colorSchemeLength = colorSchemeArray.length
-// __________ //ColorScheme toggle __________
 
 export default {
-  name: 'HelloWorld',
+  name: 'MainComponent',
+  components: { SliderDrum },
   props: {
     msg: String
   },
@@ -106,11 +105,11 @@ export default {
   methods: {
     fnc: num => num * num * num,
     colorSchemeToggle: function () {
-      toastr.warning('My name is Inigo Montoya. You killed my father, prepare to die!', 'title', { timeOut: 5000 })
-      toastr.success('success !', 'success title', { timeOut: 5000 })
-      toastr.error('error !', 'error title', { timeOut: 5000 })
-      toastr.info('sone info!', 'info title', { timeOut: 5000 })
-      if (this.colorSchemeCounter < colorSchemeLength - 1) {
+      // toastr.warning('My name is Inigo Montoya. You killed my father, prepare to die!', 'title', { timeOut: 5000 })
+      // toastr.success('success !', 'success title', { timeOut: 5000 })
+      // toastr.error('error !', 'error title', { timeOut: 5000 })
+      // toastr.info('some info!', 'info title', { timeOut: 5000 })
+      if (this.colorSchemeCounter < colorSchemeArray.length - 1) {
         this.colorSchemeCounter++
       } else {
         this.colorSchemeCounter = 0
@@ -119,6 +118,7 @@ export default {
       for (const key in Obj) {
         document.documentElement.style.setProperty(key, Obj[key])
       }
+      toastr.info('success!', 'The color scheme has been changed', { timeOut: 3000 })
     }
   },
   mounted: function () { // init
@@ -153,23 +153,23 @@ a {
   color: #42b983;
 }
 .colorScheme-btn {
-  height: 22px;
-  width: 10px;
+  height: 32px;
+  width: 14px;
   position: relative;
-  border: 1px solid var(--Secondary);
-  border-radius: 5px;
+  border: 2px solid var(--Secondary);
+  border-radius: 7px;
   cursor: pointer;
 }
 .colorScheme-dot {
   content: "";
   position: absolute;
-  height: 6px;
-  width: 6px;
-  top: 1px;
-  right: 0;
+  height: 8px;
+  width: 8px;
+  top: 2px;
   left: 0;
+  right: 0;
   margin: 0 auto;
-  background-color: var(--Secondary);
+  background-color: var(--HighLight);
   border-radius: 50%;
   transform: translateY(0);
   transition: transform .3s linear;

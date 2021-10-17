@@ -52,7 +52,7 @@ body {
 /********** // resets **********/
 
 /********** HeaderSecton **********/
-.header-secton {
+.header-section {
     padding: 10px 0;
     border-bottom: 1px solid var(--Secondary);
 }
