@@ -21,11 +21,11 @@ const app = express()
 
 app.get('/', function (req, res) {
   console.log("app.get('/')")
-  res.send('Hello, Misa!')
+  res.send('Hello, Misha!')
 })
 
 app.listen(3000)
 
 // for start server, open terminal and write
-// npm run server
+// npm run pm2-start
 // can check it on http://localhost:3000/

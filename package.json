@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "serve2": "vue-cli-service serve",
     "server": "node server/server.js",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "pm2-start": "pm2 start server/server.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.1",
