@@ -9,6 +9,7 @@ List of changes:
 * fontAwesome
 * init SliderDrum
 * npm install pm2 -g
+* vue-router
 ```
 
 ## Project setup
@@ -53,6 +54,11 @@ debug & logging
 
 json2xlsx + Convert to CSV or DB
 D3 library
+
+task manager
+documentation
+hisotry of project
+
 ```
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
