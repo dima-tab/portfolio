@@ -41,23 +41,30 @@ https://www.npmjs.com/package/dialog-polyfill
 
 **********************
 main bar component
-routing pages
 translations i18n
+
+dataBase(pg4Admin)
+sequalize
+authorize (may be auth0)
+permissions & roles
+debug & logging
 _lodash
 vuex
 
-dataBase
-sequalize
-login
-permissions
-debug & logging
-
 json2xlsx + Convert to CSV or DB
 D3 library
+graphics
+place for publish some articles
 
 task manager
 documentation
 hisotry of project
+vuetify 3.0(beta - december 2021. release - february 2022)
+best practice with iframe
+best practice with svg
+best practice with canvas
+best practice with regex
+best practice with css positions
 
 ```
 ### Customize configuration
