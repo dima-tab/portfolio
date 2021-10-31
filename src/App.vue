@@ -1,6 +1,6 @@
 <template>
 <!--  <img alt="Vue logo" src="./assets/logo.png">-->
-  <MainComponent msg="MSG"/>
+  <MainComponent msg="MSG!!!"/>
 </template>
 
 <script>

@@ -13,6 +13,7 @@
         </div>
     </div>
     <div class="main-section">
+      <SliderDrum/>
         <div class="center">
           <div id="nav">
             <router-link to="/">Home</router-link> |
@@ -20,7 +21,6 @@
             <router-link to="/profile">Profile</router-link>
           </div>
           <router-view/>
-          <SliderDrum/>
 <!--          <div class='hello'>-->
 <!--            <h1>{{ msg }}</h1>-->
 <!--            <p>{{ count }}</p>-->
