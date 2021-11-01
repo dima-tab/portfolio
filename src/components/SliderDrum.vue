@@ -72,14 +72,16 @@ export default {
 }
 .slider {
   height: 225px;
-  padding: 10px 0;
+  padding: 15px 0;
   /*background-color: darkcyan;*/
 }
 
 /* region Buttons */
 .btn {
+  font-size: 24px;
   position: absolute;
   top: calc(50% - 9px);
+  color: var(--HighLight);
 }
 .btn-left {
   left: 10px;
@@ -93,7 +95,8 @@ export default {
 .slider-list {
   position: relative;
   display: flex;
-  align-items: flex-end;
+  /*align-items: flex-end;*/
+  align-items: center;
   max-width: 1350px;
   min-height: 100%;
   overflow: hidden;
@@ -107,8 +110,8 @@ export default {
   width: 60px;
   height: 50px;
   object-fit: cover;
-  border-radius: 15px;
-  border: darkgrey 2px solid;
+  border-radius: 5px;
+  /*border: var(--HighLight) 1px solid;*/
   box-sizing: border-box;
 }
 .slider-list > div:nth-child(1),
