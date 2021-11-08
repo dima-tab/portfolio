@@ -1,5 +1,9 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper"
+       tabindex="-1"
+       @keyup.left="offsetBy(-1)"
+       @keyup.right="offsetBy(1)"
+       @scroll="offsetBy(-1)">
     <div class="slider">
       <a href="#" class="btn btn-left" @click="offsetBy(-1)">
         <i class="fas fa-chevron-left"/>
@@ -13,6 +17,8 @@
           <a href="#">
             <img :src="img.url" alt="pony">
           </a>
+            <p class="info">Lorem ipsum dolor sit amet.</p>
+          <button class="details">details</button>
         </div>
       </div>
       <a href="#" class="btn btn-right" @click="offsetBy(1)">
@@ -59,7 +65,14 @@ export default {
   },
   mounted: function () {
     this.slides = this.images
+    console.log(this.slides)
+  },
+  created: function () {
+    window.addEventListener('scroll', this.offsetBy)
   }
+  // destroyed: function () {
+  //   window.removeEventListener('scroll', this.offsetBy)
+  // }
 }
 </script>
 
@@ -69,11 +82,13 @@ export default {
   justify-content: center;
   padding: 0 5px;
   position: relative;
+  outline: none;
 }
 .slider {
   height: 225px;
   padding: 10px 0;
   /*background-color: darkcyan;*/
+  scroll-snap-align: center;
 }
 
 /* region Buttons */
@@ -93,23 +108,52 @@ export default {
 .slider-list {
   position: relative;
   display: flex;
-  align-items: flex-end;
-  max-width: 1350px;
+  align-items: center;
+  max-width: 1200px;
   min-height: 100%;
   overflow: hidden;
+  /*overflow-x: scroll;*/
+  /*scroll-snap-type: x mandatory;*/
 }
-
 .slide {
   margin-right: 15px;
   transition: all 1s ease;
+  border-radius: 15px;
+  border: darkgrey 2px solid;
+  box-sizing: border-box;
+  background: white;
+  position: relative;
 }
 .slider-list img {
   width: 60px;
   height: 50px;
+  border-radius: 15px 15px 0 0;
   object-fit: cover;
-  border-radius: 15px;
+}
+.info{
+  color: #0c101c;
+  width: 50px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding: 5px;
+}
+.details{
+  background: #7ba0d9;
   border: darkgrey 2px solid;
-  box-sizing: border-box;
+  padding: 5px;
+  border-radius: 15px;
+  position: absolute;
+  right: 5px;
+  bottom: 15px;
+}
+.slider-list > div:not(:nth-child(5)){
+  filter: blur(1px);
+  opacity: 0.7;
+}
+.slider-list > div:not(:nth-child(5)):hover{
+  filter: none;
+  opacity: 1;
 }
 .slider-list > div:nth-child(1),
 .slider-list > div:nth-child(9) {
@@ -121,23 +165,34 @@ export default {
 
 .slider-list > div:nth-child(2) img,
 .slider-list > div:nth-child(8) img {
-  width: 120px;
-  height: 100px;
+  width: 110px;
+  height: 90px;
 }
 .slider-list > div:nth-child(3) img,
 .slider-list > div:nth-child(7) img {
-  width: 180px;
-  height: 150px;
+  width: 140px;
+  height: 120px;
+}
+.slider-list > div:nth-child(3) p,
+.slider-list > div:nth-child(7) p {
+  width: 100px;
 }
 .slider-list > div:nth-child(5) img {
-  width: 240px;
-  height: 210px;
+  width: 220px;
+  height: 200px;
+  opacity: 1;
+}
+.slider-list > div:nth-child(5) p {
+  width: 160px;
 }
 .slider-list > div:nth-child(4) img,
 .slider-list > div:nth-child(6) img {
-  width: 210px;
-  height: 180px;
-
+  width: 180px;
+  height: 150px;
+}
+.slider-list > div:nth-child(4) p,
+.slider-list > div:nth-child(6) p {
+  width: 130px;
 }
 
 .slider-list * {
