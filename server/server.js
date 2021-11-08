@@ -19,12 +19,12 @@ const app = express()
 //   })
 // })
 
-app.get('/', function (req, res) {
-  console.log("app.get('/')")
-  res.send('Hello, Misha!')
+app.get('/', function(req, res) {
+	console.log('app.get(\'/\')');
+	res.send('Hello, Misha!');
 })
 
-app.listen(3000)
+app.listen(3000);
 
 // for start server, open terminal and write
 // npm run pm2-start

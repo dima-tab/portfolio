@@ -1,0 +1,283 @@
+{
+	"globals": {
+		"globalThis": "readonly",
+		"window": "readonly",
+		"document": "readonly",
+		"moment": "readonly",
+		"H": "readonly",
+		"telegram": "readonly",
+		"axios": "readonly",
+		"TimeLogger": "readonly"
+	},
+	"parser": "babel-eslint",
+	"parserOptions": {
+		"sourceType": "module",
+		"allowImportExportEverywhere": true,
+		"ecmaFeatures": {
+			"jsx": true,
+			"modules": true
+		}
+	},
+	"extends": [
+		// "airbnb-base",
+		//	"defaults"
+		//	"plugin:vue/vue3-essential",
+		//	"@vue/standard"
+	],
+	// COMMON
+	"rules": {
+		"indent": [
+			2,
+			"tab",
+			{
+				"SwitchCase": 1,
+				"VariableDeclarator": 1,
+				"MemberExpression": 1,
+				"CallExpression": {"arguments": 1},
+				"ArrayExpression": 1,
+				"ObjectExpression": 1,
+				"flatTernaryExpressions": true
+			}
+		],
+		"no-tabs": 0,
+		"quotes": [
+			"error",
+			"single",
+			{
+				"allowTemplateLiterals": true,
+				"avoidEscape": true
+			}
+		],
+		"semi": 0, // [2, "always"], // [2, "never"],
+		"comma-spacing": [
+			"error",
+			{
+				"before": false,
+				"after": true
+			}
+		],
+		"no-console": 0,
+		"comma-dangle": 0,
+		"no-unused-vars": [
+			"warn"
+		],
+		"no-confusing-arrow": [
+			"error",
+			{
+				"allowParens": true
+			}
+		],
+		// SPACES
+		"no-multiple-empty-lines": [
+			"error",
+			{
+				"max": 2,
+				"maxEOF": 0,
+				"maxBOF": 0
+			}
+		],
+		"no-multi-spaces": [
+			"error"
+		],
+		"space-before-function-paren": [
+			"error",
+			"never"
+		],
+		"space-before-blocks": "error",
+		"key-spacing": [
+			"error",
+			{
+				"beforeColon": false,
+				"afterColon": true
+			}
+		],
+		"keyword-spacing": [
+			"error",
+			{
+				"after": true
+			}
+		],
+		"space-unary-ops": [
+			"error"
+		],
+		"space-infix-ops": [
+			"error"
+		],
+		"no-trailing-spaces": "error",
+		// "space-in-parens": ["error", "never"],
+
+		// BRACES
+		"brace-style": [
+			"error",
+			"stroustrup",
+			{
+				"allowSingleLine": true
+			}
+		],
+		"object-curly-newline": [
+			"error",
+			{
+				"ObjectExpression": {
+					"multiline": true,
+					"consistent": true
+				},
+				"ObjectPattern": {
+					"multiline": true,
+					"consistent": true
+				}
+				// "ImportDeclaration": { "multiline": true, "minProperties": 4, "consistent": true },
+				// "ExportDeclaration": { "multiline": true, "minProperties": 4, "consistent": true },
+			}
+		],
+		"object-property-newline": [
+			"error",
+			{
+				"allowAllPropertiesOnSameLine": true
+			}
+		],
+		// "curly": ["error", "multi-or-nest"],
+
+		"linebreak-style": [
+			"error",
+			"windows"
+		],
+		"no-underscore-dangle": 0,
+		"import/order": 0
+	},
+	"overrides": [
+		// VUE
+		{
+			"files": [
+				"*.vue"
+			],
+			"plugins": [
+				"vue"
+			],
+			"extends": [
+				"plugin:vue/recommended"
+			],
+			//"@vue/airbnb"
+			"env": {
+				"browser": true,
+				"commonjs": true,
+				"es6": true
+			},
+			"rules": {
+				"max-len": [
+					"warn",
+					{
+						"code": 160,
+						"tabWidth": 0,
+						"ignoreComments": true,
+						"ignoreUrls": true
+					}
+				],
+				"np-extra-boolean-cast": 0,
+				"vue/require-default-prop": 0,
+				"vue/no-mutating-props": 0,
+				"vue/valid-v-slot": [
+					"error",
+					{
+						"allowModifiers": true
+					}
+				],
+				"vue/html-closing-bracket-newline": "error",
+				"vue/html-closing-bracket-spacing": "error",
+				"vue/html-indent": [
+					"error",
+					"tab",
+					{}
+				],
+				"vue/attribute-hyphenation": 0,
+				"vue/no-unused-vars": [
+					"warn"
+				],
+				"no-unused-vars": [
+					"error",
+					{
+						"args": "none"
+					}
+				],
+				// args none to provide all arguments in v-slots, even unused. May be enabled in future
+				"vue/max-attributes-per-line": [
+					"error",
+					{
+						// Basicly not very useful because do not allows symbol-length, max-len used instead
+						"singleline": {
+							"max": 6,
+							"allowFirstLine": true
+						},
+						"multiline": {
+							"max": 1,
+							"allowFirstLine": false
+						}
+					}
+				],
+				// Based on Vue style guide
+				"vue/component-tags-order": [
+					"error",
+					{
+						"order": ["template", "script", "style"]
+					}
+				],
+				// Modified version, original - https://vuejs.org/v2/style-guide/#Component-instance-options-order-recommended
+				"vue/order-in-components": [
+					"error",
+					{
+						"order": [
+							"el",
+							"name",
+							["key", "functional", "inheritAttrs"],
+							["extends", "mixins", "parent", "delimiters", "comments", "provide", "inject"],
+							"components",
+							["props", "propsData"],
+							["data", "asyncData"],
+							["computed", "methods"],
+							"LIFECYCLE_HOOKS",
+							// "ROUTER_GUARDS", "layout", "middleware", "validate", "scrollToTop", "transition", "loading", "model", "emits", "setup", "fetch", "head", // can be everywhere
+							["watch", "watchQuery"],
+							["directives", "filters"],
+							["template", "render"],
+							"renderError"
+						]
+					}
+				],
+				// Based on Vue style guide https://vuejs.org/v2/style-guide/#Element-attribute-order-recommended
+				"vue/attributes-order": [
+					"error",
+					{
+						"order": [
+							"DEFINITION",
+							"LIST_RENDERING",
+							"CONDITIONALS",
+							"RENDER_MODIFIERS",
+							"GLOBAL",
+							["UNIQUE", "SLOT"],
+							"TWO_WAY_BINDING",
+							"OTHER_DIRECTIVES",
+							"OTHER_ATTR",
+							"EVENTS",
+							"CONTENT"
+						],
+						"alphabetical": false
+					}
+				]
+			}
+		},
+		// JS
+		{
+			"files": [
+				"*.js"
+			],
+			//"extends": ["airbnb-base"],
+			"env": {
+				"browser": true,
+				"commonjs": true,
+				"es6": true,
+				"node": true
+			},
+			"rules": {
+			}
+		}
+	]
+}

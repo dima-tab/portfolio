@@ -1,17 +1,15 @@
-/********** fonts **********/
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600');
-/********** // fonts **********/
 
-/********** root **********/
+/* region root */
 :root {
     --Primary:#0c101c;
     --Secondary: #394b65;
     --FontColor: #fff;
     --HighLight: #7ba0d9;
 }
-/********** // root **********/
+/* endregion */
 
-/********** resets **********/
+/* region resets */
 * {
     margin: 0;
     padding: 0;
@@ -49,26 +47,26 @@ body {
 .highlight {
     color: var(--HighLight);
 }
-/********** // resets **********/
+/* endregion */
 
-/********** HeaderSecton **********/
+/* region HeaderSecton */
 .header-section {
     padding: 10px 0;
     border-bottom: 1px solid var(--Secondary);
 }
-/********** // HeaderSecton **********/
+/* endregion */
 
-/********** MainSection **********/
+/* region MainSection */
 .main-section {
     display: flex;
     flex-direction: column;
     flex: 1;
 }
-/********** // MainSection **********/
+/* endregion */
 
-/********** colorScheme-btn **********/
+/* region colorScheme-btn */
 .footer-section {
     padding: 10px 0;
     border-top: 1px solid var(--Secondary);
 }
-/********** // colorScheme-btn **********/
+/* endregion */
