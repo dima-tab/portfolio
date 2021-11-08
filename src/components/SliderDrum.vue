@@ -86,15 +86,17 @@ export default {
 }
 .slider {
   height: 225px;
-  padding: 10px 0;
+  padding: 15px 0;
   /*background-color: darkcyan;*/
   scroll-snap-align: center;
 }
 
 /* region Buttons */
 .btn {
+  font-size: 24px;
   position: absolute;
   top: calc(50% - 9px);
+  color: var(--HighLight);
 }
 .btn-left {
   left: 10px;
@@ -154,6 +156,7 @@ export default {
 .slider-list > div:not(:nth-child(5)):hover{
   filter: none;
   opacity: 1;
+  box-sizing: border-box;
 }
 .slider-list > div:nth-child(1),
 .slider-list > div:nth-child(9) {
