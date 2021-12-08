@@ -1,91 +1,91 @@
 <template>
-   <div
-      class="wrapper"
-      tabindex="-1"
-      @keyup.left="offsetBy(-1)"
-      @keyup.right="offsetBy(1)"
-   >
-      <div class="slider">
-         <a href="#" class="btn btn-left" @click="offsetBy(-1)">
-            <i class="fas fa-chevron-left"/>
-         </a>
-         <div v-if="!!images?.length" class="slider-list">
-            <div
-               v-for="img in slides"
-               :key="img.url"
-               class="slide"
-               @click="offsetBy(5 - img.position)"
-            >
-               <a href="#">
-                  <img :src="img.url" alt="pony">
-               </a>
-               <p class="info">
-                  Lorem ipsum dolor sit amet.
-               </p>
-               <button class="details"
-               @click="showDetails = !showDetails">
-                  details
-               </button>
-            </div>
-         </div>
-         <a href="#" class="btn btn-right" @click="offsetBy(1)">
-            <i class="fas fa-chevron-right"/>
-         </a>
-      </div>
-   </div>
-   <div v-if="showDetails"
-      class="description">
-      {{ currentDescription }}
-   </div>
+	<div
+		class="wrapper"
+		tabindex="-1"
+		@keyup.left="offsetBy(-1)"
+		@keyup.right="offsetBy(1)"
+	>
+		<div class="slider">
+			<a href="#" class="btn btn-left" @click="offsetBy(-1)">
+				<i class="fas fa-chevron-left" />
+			</a>
+			<div v-if="!!images?.length" class="slider-list">
+				<div
+					v-for="img in slides"
+					:key="img.url"
+					class="slide"
+					@click="offsetBy(5 - img.position)"
+				>
+					<a href="#">
+						<img :src="img.url" alt="pony">
+					</a>
+					<p class="info">
+						Lorem ipsum dolor sit amet.
+					</p>
+					<button
+						class="details"
+						@click="showDetails = !showDetails"
+					>
+						details
+					</button>
+				</div>
+			</div>
+			<a href="#" class="btn btn-right" @click="offsetBy(1)">
+				<i class="fas fa-chevron-right" />
+			</a>
+		</div>
+	</div>
+	<div v-if="showDetails" class="description">
+		{{ currentDescription }}
+	</div>
 </template>
 
 <script>
 import toastr from 'toastr'
 import 'toastr/build/toastr.css'
 
-const imgArr = require.context('../assets/slides', false, /\.(png|jpe?g|svg)$/)
+const imgArr = require.context('../assets/slides', false, /\.(png|jpe?g|svg)$/);
 
 export default {
-  name: 'SliderDrum',
-  data () {
-    return {
-      order: 1,
-      slides: null,
-      showDetails: false
-    }
-  },
-  methods: {
-    offsetBy: function (num) {
-      if (!this?.images?.length) return toastr.error('Images not loaded!', 'Error', { timeOut: 3500 })
+	name: 'SliderDrum',
+	data() {
+		return {
+			order: 1,
+			slides: null,
+			showDetails: false,
+		}
+	},
+	methods: {
+		offsetBy: function(num) {
+			if (!this?.images?.length) return toastr.error('Images not loaded!', 'Error', { timeOut: 3500 });
 
-      while (num > 0) { // to right
-        this.slides.unshift(...this.slides.splice(this.slides.length - 1, 1))
-        num--
-      }
-      while (num < 0) { // to left
-        this.slides.push(this.slides.shift())
-        num++
-      }
-      this.slides.forEach((slide, i) => {
-        slide.position = i + 1
-      })
-    }
-  },
-  computed: {
-    images: () => imgArr.keys().map((img, i) => {
-      return { url: imgArr(img), position: i + 1 }
-    }),
-    currentDescription: function () { return this.slides ? this.slides[5]?.url : null }
-  },
-  mounted: function () {
-    this.slides = this.images
-  },
-  created: function () {
-    window.addEventListener('wheel', e => {
-      this.offsetBy(Math.round(e.deltaY / 120))
-      // console.log(e);
-    })
-  }
+			while (num > 0) { // to right
+				this.slides.unshift(...this.slides.splice(this.slides.length - 1, 1));
+				num--;
+			}
+			while (num < 0) { // to left
+				this.slides.push(this.slides.shift());
+				num++;
+			}
+			this.slides.forEach((slide, i) => {
+				slide.position = i + 1;
+			})
+		}
+	},
+	computed: {
+		images: () => imgArr.keys().map((img, i) => {
+			return { url: imgArr(img), position: i + 1 }
+		}),
+		currentDescription: function() { return this.slides ? this.slides[5]?.url : null }
+	},
+	mounted: function() { // onLoaded BEFORE create component
+		this.slides = this.images;
+	},
+	created: function() { // onLoaded BEFORE create component
+		window.addEventListener('wheel', e => {
+			this.offsetBy(Math.round(e.deltaY / 120));
+		})
+	}
 }
 </script>
 
@@ -99,7 +99,7 @@ export default {
 }
 
 .slider {
-   height: 225px;
+   height: 265px;
    padding: 15px 0;
 }
 

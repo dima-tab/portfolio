@@ -10,6 +10,7 @@ List of changes:
 * init SliderDrum
 * npm install pm2 -g
 * vue-router
+* eslint
 ```
 
 ## Project setup

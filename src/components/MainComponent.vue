@@ -1,75 +1,53 @@
 <template>
-   <section class="root">
-      <div class="header-section">
-         <div>
-            FONT AWESOME
-            <i class="far fa-question-circle"/> <!-- solid style of the question circle icon -->
-            <i class="fas fa-question-circle"/> <!-- solid style of the question circle icon -->
-            <i class="fab fa-facebook"/>        <!-- facebook brand icon-->
-            <i class="fab fa-facebook-f"/>      <!-- facebook "f" brand icon-->
-         </div>
-         <div class="center">
-            <p>Portfolio <span class="highlight">project</span></p>
-         </div>
-      </div>
-      <div class="main-section">
-         <SliderDrum/>
-         <div class="center">
-            <div id="nav">
-               <router-link to="/">
-                  Home
-               </router-link>
-               |
-               <router-link to="/about">
-                  About
-               </router-link>
-               |
-               <router-link to="/profile">
-                  Profile
-               </router-link>
-            </div>
-            <router-view/>
-            <!--          <div class='hello'>-->
-            <!--            <h1>{{ msg }}</h1>-->
-            <!--            <p>{{ count }}</p>-->
-            <!--            <p>{{ fnc(count) }}</p>-->
-            <!--            <ul>-->
-            <!--              <li-->
-            <!--                v-for="(item, index) in arr"-->
-            <!--                :key="'key_' + item.value"-->
-            <!--              >-->
-            <!--                - index: {{ index }} |-->
-            <!--                - value: {{ item.value }} |-->
-            <!--                - label: {{ item.label }}-->
-            <!--              </li>-->
-            <!--            </ul>-->
-            <!--            <ul>-->
-            <!--              <li-->
-            <!--                v-for="(item, key) in bitcoinInfo"-->
-            <!--                :key="'key_' + item.value"-->
-            <!--              >-->
-            <!--                - key: {{ key }} |-->
-            <!--                - code: {{ item.code }} |-->
-            <!--                - rate: {{ item.rate_float }}-->
-            <!--              </li>-->
-            <!--            </ul>-->
-            <!--            <button @click='count++'>Кликни меня полностью для +1</button>-->
-            <!--          </div>-->
-         </div>
-      </div>
-      <div class="footer-section">
-         <div class="center">
-            <div class="colorScheme-block">
-               <div class="colorScheme-btn" @click="colorSchemeToggle">
+	<section class="root">
+		<div class="header-section">
+			<div class="center">
+				<p>Portfolio <span class="highlight">project</span></p>
+			</div>
+		</div>
+		<div class="main-section">
+			<SliderDrum />
+			<div class="center">
+				<div id="nav">
+					<router-link to="/">
+						<i class="fas fa-home" />
+						Home
+					</router-link>
+
+					|
+					<router-link to="/about">
+						<i class="fas fa-question-circle" />
+						About
+					</router-link>
+
+					|
+					<router-link to="/profile">
+						<i class="fas fa-user" />
+						Profile
+					</router-link>
+
+					|
+					<router-link to="/team">
+						<i class="fas fa-users" />
+						Our Team
+					</router-link>
+				</div>
+				<router-view />
+			</div>
+		</div>
+		<div class="footer-section">
+			<div class="center">
+				<div class="colorScheme-block">
+					<div class="colorScheme-btn" @click="colorSchemeToggle">
 						<span
-                     class="colorScheme-dot"
-                     :style="{transform: `translateY(${colorSchemeCounter * 100}%)`}"
-                  />
-               </div>
-            </div>
-         </div>
-      </div>
-   </section>
+							class="colorScheme-dot"
+							:style="{transform: `translateY(${colorSchemeCounter * 100}%)`}"
+						/>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 </template>
 
 <script>
@@ -82,81 +60,82 @@ import 'toastr/build/toastr.css'
 import SliderDrum from './SliderDrum.vue'
 
 const colorSchemeArray = [
-  { // custom
-    '--Primary': '#0c101c',
-    '--Secondary': '#394b65',
-    '--FontColor': '#fff',
-    '--HighLight': '#7ba0d9'
-  },
-  { // dark
-    '--Primary': '#000',
-    '--Secondary': '#1b1b1b',
-    '--FontColor': '#fff',
-    '--HighLight': '#f90'
-  },
-  { // light
-    '--Primary': '#b7b7b7',
-    '--Secondary': '#e1e1e1',
-    '--FontColor': '#7a7a7a',
-    '--HighLight': '#040404'
-  }
+	{ // custom
+		'--Primary': '#0c101c',
+		'--Secondary': '#394b65',
+		'--FontColor': '#fff',
+		'--HighLight': '#7ba0d9'
+	},
+	{ // dark
+		'--Primary': '#000',
+		'--Secondary': '#1b1b1b',
+		'--FontColor': '#fff',
+		'--HighLight': '#f90',
+	},
+	{ // light
+		'--Primary': '#b7b7b7',
+		'--Secondary': '#e1e1e1',
+		'--FontColor': '#7a7a7a',
+		'--HighLight': '#040404',
+	}
 ]
 
 export default {
-  name: 'MainComponent',
-  components: { SliderDrum },
-  props: {
-    msg: String
-  },
-  data: function () {
-    return {
-      bitcoinInfo: null,
-      count: 0,
-      colorSchemeCounter: 0,
-      arr: [
-        {
-          label: 'one',
-          value: 1
-        },
-        {
-          label: 'two',
-          value: 2
-        },
-        {
-          label: 'three',
-          value: 3
-        }
-      ]
-    }
-  },
-  methods: {
-    fnc: num => num * num * num,
-    colorSchemeToggle: function () {
-      // toastr.warning('My name is Inigo Montoya. You killed my father, prepare to die!', 'title', { timeOut: 5000 })
-      // toastr.success('success !', 'success title', { timeOut: 5000 })
-      // toastr.error('error !', 'error title', { timeOut: 5000 })
-      // toastr.info('some info!', 'info title', { timeOut: 5000 })
-      if (this.colorSchemeCounter < colorSchemeArray.length - 1) {
-        this.colorSchemeCounter++
-      } else {
-        this.colorSchemeCounter = 0
-      }
-      const Obj = colorSchemeArray[this.colorSchemeCounter]
-      for (const key in Obj) {
-        document.documentElement.style.setProperty(key, Obj[key])
-      }
-      toastr.info('success!', 'The color scheme has been changed', { timeOut: 3000 })
-    }
-  },
-  mounted: function () { // init
-    axios
-      .get('https://api.coindesk.com/v1/bpi/currentprice.json')
-      .then(response => {
-        this.bitcoinInfo = response.data.bpi
-        console.log(response.data)
-      })
-      .catch(err => console.error(err))
-  }
+	name: 'MainComponent',
+	components: { SliderDrum },
+	props: {
+		msg: String
+	},
+	data: function() {
+		return {
+			bitcoinInfo: null,
+			count: 0,
+			colorSchemeCounter: 0,
+			arr: [
+				{
+					label: 'one',
+					value: 1,
+				},
+				{
+					label: 'two',
+					value: 2,
+				},
+				{
+					label: 'three',
+					value: 3,
+				}
+			]
+		}
+	},
+	methods: {
+		fnc: num => num * num * num,
+		colorSchemeToggle: function() {
+			// toastr.warning('My name is Inigo Montoya. You killed my father, prepare to die!', 'title', { timeOut: 5000 })
+			// toastr.success('success !', 'success title', { timeOut: 5000 })
+			// toastr.error('error !', 'error title', { timeOut: 5000 })
+			// toastr.info('some info!', 'info title', { timeOut: 5000 })
+			if (this.colorSchemeCounter < colorSchemeArray.length - 1) {
+				this.colorSchemeCounter++;
+			}
+			else {
+				this.colorSchemeCounter = 0
+			}
+			const Obj = colorSchemeArray[this.colorSchemeCounter]
+			for (const key in Obj) {
+				document.documentElement.style.setProperty(key, Obj[key]);
+			}
+			toastr.info('success!', 'The color scheme has been changed', { timeOut: 3000 })
+		}
+	},
+	mounted: function() { // init
+		axios
+			.get('https://api.coindesk.com/v1/bpi/currentprice.json')
+			.then(response => {
+				this.bitcoinInfo = response.data.bpi;
+				console.log(response.data);
+			})
+			.catch(err => console.error(err));
+	}
 }
 
 </script>
